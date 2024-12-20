@@ -3,8 +3,8 @@
 **Minas Airlines** é um sistema para gerenciamento de companhias aéreas, permitindo o cadastro de voos, reservas e clientes.
 
 ## Render: Cloud Application Platform
-https://frontend-minas.onrender.com/ (Link do front end estático do sistema).
-https://minasairlines-daam.onrender.com/ ()
+https://frontend-minas.onrender.com/ `(Link do front-end estático do sistema).`
+https://minasairlines-daam.onrender.com/ `(Back-end conectado ao banco de dados)`
 
 ## Funcionalidades
 - Cadastro, edição e exclusão de voos.
