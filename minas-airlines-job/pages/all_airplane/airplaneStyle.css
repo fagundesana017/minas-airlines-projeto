@@ -1,0 +1,276 @@
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    flex: 1; /* Faz o conteúdo principal crescer e ocupar o espaço restante */
+}
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+  
+.bg-info{
+    background: #1E234B !important;
+}
+  
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.navbar .rounded-circle {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.navbar .rounded-circle:hover {
+    background-color: #e9ecef;
+}
+.nav-item {
+    margin-right: 60px; /* Margem no lado direito */
+}
+
+.nav-link {
+    margin-left: 8px; /* Margem no lado esquerdo */
+}
+  
+.animated{
+    width: 100px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+  }
+  
+
+h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+}
+.title-table {
+    font-weight: 700;
+    color: #1E234B;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block;
+    font-size: 50px;
+}
+
+.title-table::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(to right, #0f2d4d, #4394ac);
+    border-radius: 2px;
+}
+
+.responsive-table {
+    list-style: none;
+    padding: 0;
+}
+
+.responsive-table li {
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.responsive-table .table-header {
+    background-color: #1E234B;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 25px 30px;
+    font-weight: 600;
+    color: #f1f1f1;
+}
+.responsive-table .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    padding: 25px 30px;
+}
+.responsive-table .col {
+    display: flex;
+    align-items: center;
+    padding: 0 10px; /* Add horizontal padding between columns */
+}
+.responsive-table .col-1 { flex-basis: 12%; }
+.responsive-table .col-2 { flex-basis: 13%; }
+.responsive-table .col-3 { flex-basis: 15%; }
+.responsive-table .col-4 { flex-basis: 15%; }
+.responsive-table .col-5 { flex-basis: 15%; }
+.responsive-table .col-6 { flex-basis: 15%; }
+.responsive-table .col-7 { flex-basis: 15%; }
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0 5px;
+    padding: 5px;
+    color: #333;
+}
+
+.edit-btn:hover {
+    color: #28a745;
+}
+
+.delete-btn:hover {
+    color: #dc3545;
+}
+
+@media all and (max-width: 767px) {
+    .responsive-table .table-header {
+        display: none;
+    }
+    .responsive-table li {
+        display: block;
+    }
+    .responsive-table .col {
+        flex-basis: 100%;
+        display: flex;
+        padding: 10px 0;
+    }
+    .responsive-table .col:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+    }
+}
+
+  .cadastrar{
+    padding: 12px;
+    width: 300px;
+    background-color: #1E234B;
+    color: #fff;
+    border: #1E234B;
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-right: -12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .cadastrar:hover{
+    background-color: #2f376e;
+    color: #fff;
+  }
+
+  .search{
+    background-color: #1E234B;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    width: 60px;
+  }
+  .btn-outline-secondary:hover{
+    background-color:#1E234B;
+  }
+
+.btn {
+    color: white;
+    font-weight: 600;
+    background-color: #2f376e;
+    border-color: transparent;
+    padding: 10px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #42486e ;
+}
+
+.pagination{
+    margin-top: 4rem;
+    margin-bottom: 2.25rem;
+}
+/* Cor de fundo e borda personalizada para os links */
+.pagination .page-link {
+    color: #1E234B; /* Cor do texto padrão */
+    border: 1px solid #ddd; /* Cor da borda */
+}
+
+.pagination .page-link:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+    color: #1E234B; /* Cor do texto ao passar o mouse */
+}
+
+/* Estilo para o item ativo */
+.pagination .active .page-link {
+    background-color: #1E234B; /* Cor de fundo do item ativo */
+    color: white; /* Cor do texto do item ativo */
+    border-color: #1E234B; /* Cor da borda do item ativo */
+}
+
+/* Remove cantos arredondados se necessário */
+.pagination .page-link {
+    border-radius: 0;
+}
+
+.btn2{
+    color: #1E234B;
+    font-weight: 600;
+    background-color: white;
+    border-color: #2f376e;
+    padding: 10px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.btn2:hover{
+    color: #1E234B;
+    font-weight: 600;
+    background-color: rgb(187, 185, 212);
+    border-color: #2f376e;
+    padding: 10px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.main {
+    flex: 1; 
+    padding: 70px; 
+}
+
+button:disabled {
+    background-color: #d6d6d6; /* Cor cinza */
+    color: #7a7a7a; /* Cor do texto */
+    border: 1px solid #ccc; /* Cor da borda */
+    cursor: not-allowed; /* Alterar o cursor para indicar que não é clicável */
+}
+footer {
+    background-color: #f8f8f8; /* Cor de fundo opcional */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+}
+.nav-register{
+    margin-bottom: 40px;
+}
