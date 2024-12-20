@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Minas Airlines</title>
+    <link rel="icon" href="../../assets/img/favicon.png" sizes="64x64" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../all_airplane/airplaneStyle.css"/>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+</head>
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+  }
+
+  h1 {
+      margin-top: -2rem;
+      margin-bottom: 2rem;
+      color: white;
+      text-align: center;
+      font-size: 2rem;
+      z-index: 10;
+  }
+
+  #map {
+      width: 100%; 
+      height: calc(100vh - 60px);
+  }
+
+  @media (max-width: 768px) {
+      #map {
+          height: 400px;
+      }
+
+      h1 {
+          font-size: 1.5rem;
+      }
+  }
+</style>
+<body>
+  <!-- Navbar -->
+  <ul class="nav bg-info px-3 py-2">
+    <li class="nav-item d-flex align-items-center">
+        <img src="../../assets/img/logo.png" style="width: 180px; margin-top: 15px; margin-bottom: 15px; margin-left: 60px;" alt="Minha Imagem">
+    </li>
+    <li class="nav-item ms-auto">
+        <a class="nav-link link-light" href="../all_airplane/airplanePage.html">Aeronaves</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link link-light" href="../hangar/hangarPage.html">Hangar</a>
+    </li>
+    <li class="nav-item d-flex align-items-center">
+      <i class="bi bi-broadcast" style="color: rgb(230, 20, 20); margin-right: 5px;"></i>
+      <a class="nav-link link-light" href="../monitoring/monitoringPage.html">Monitoramento</a>
+    </li>
+    <li class="nav-item d-flex align-items-center ms-3">
+      <!-- Ícone de perfil com dropdown -->
+      <div class="dropdown">
+          <a href="#" class="d-flex align-items-center justify-content-center bg-light rounded-circle" style="width: 40px; height: 40px;" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person" style="font-size: 1.5rem; color: #1E234B;"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <!-- <li><a class="dropdown-item" href="#">Perfil</a></li>
+              <li><a class="dropdown-item" href="#">Configurações</a></li> -->
+              <li><a class="dropdown-item" href="../../index.html">Sair</a></li>
+          </ul>
+      </div>
+  </li>
+</ul>
+
+  <!-- Corpo da Página -->
+  <h1>Monitoramento de Voos ao Vivo</h1>
+  <div id="map"></div>
+  <!--monitoramento-->
+
+<!-- Footer -->
+<!-- <footer>
+  <p style="margin-top: 10px; font-size: 14px;">&copy; 2024 Minas Airlines. Todos os direitos reservados.</p>
+</footer> -->
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+  var map = L.map('map', {
+      center: [20.0, 0.0],
+      zoom: 2,
+      minZoom: 2,
+      maxZoom: 5,
+      maxBounds: [
+          [-90, -180],
+          [90, 180] 
+      ], 
+      maxBoundsViscosity: 1.0, 
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+  }).addTo(map);
+
+  var airplaneIcon = L.icon({
+      iconUrl: 'https://img.icons8.com/?size=100&id=15120&format=png&color=000000',
+      iconSize: [40, 40],
+      iconAnchor: [20, 20],
+      className: 'airplane-icon'
+  });
+
+  var markers = L.markerClusterGroup();
+  map.addLayer(markers);
+
+  let debounceTimer;
+  function fetchFlights() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+
+          var bounds = map.getBounds();
+          var southWest = bounds.getSouthWest();
+          var northEast = bounds.getNorthEast();
+
+          var bbox = `lamin=${southWest.lat}&lomin=${southWest.lng}&lamax=${northEast.lat}&lomax=${northEast.lng}`;
+
+          fetch(`https://opensky-network.org/api/states/all?${bbox}`, {
+              headers: {
+                  'Authorization': 'Basic ' + btoa('username:password')
+              }
+          })
+          .then(response => response.json())
+          .then(data => {
+              markers.clearLayers();
+
+              data.states.forEach(flight => {
+                  var lat = flight[6]; 
+                  var lon = flight[5];  
+                  var icao = flight[0];
+                  var speed = flight[9]; 
+                  
+                  if (lat !== null && lon !== null) {
+                      var marker = L.marker([lat, lon], { icon: airplaneIcon });
+                      marker.bindPopup(` 
+                          <strong>Aeronave: ${icao}</strong><br>
+                          Latitude: ${lat.toFixed(2)}<br>
+                          Longitude: ${lon.toFixed(2)}<br>
+                          Velocidade: ${speed ? speed.toFixed(2) : 'N/A'} knots<br>
+                      `);
+                      markers.addLayer(marker);
+                  }
+              });
+          })
+          .catch(error => {
+              console.error('Erro ao carregar dados da API:', error);
+          });
+      }, 500);
+  }
+
+  map.on('moveend', fetchFlights);
+
+  fetchFlights();
+</script>
+
+</body>
+</html>

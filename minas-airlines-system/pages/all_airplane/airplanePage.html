@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Minas Airlines</title>
+    <link rel="icon" href="../../assets/img/favicon.png" sizes="64x64" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../all_airplane/airplaneStyle.css"/>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <ul class="nav bg-info px-3 py-2">
+    <li class="nav-item d-flex align-items-center">
+        <img src="../../assets/img/logo.png" style="width: 180px; margin-top: 15px; margin-bottom: 15px; margin-left: 60px;" alt="Minha Imagem">
+    </li>
+    <li class="nav-item ms-auto">
+        <a class="nav-link link-light" href="../all_airplane/airplanePage.html">Aeronaves</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link link-light" href="../hangar/hangarPage.html">Hangar</a>
+    </li>
+    <li class="nav-item d-flex align-items-center">
+      <i class="bi bi-broadcast" style="color: rgb(230, 20, 20); margin-right: 5px;"></i>
+      <a class="nav-link link-light" href="../monitoring/monitoringPage.html">Monitoramento</a>
+    </li>
+    <li class="nav-item d-flex align-items-center ms-3">
+      <div class="dropdown">
+          <a href="#" class="d-flex align-items-center justify-content-center bg-light rounded-circle" style="width: 40px; height: 40px;" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person" style="font-size: 1.5rem; color: #1E234B;"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="../../index.html" onclick="logout()">Sair</a></li>
+          </ul>
+      </div>
+  </li>
+</ul>
+
+  <!-- Corpo da Página -->
+  <div class="container mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h1 class="title-table">Aeronaves</h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Pesquisar por matrícula" aria-label="Pesquisar" id="searchInput">
+                <button class="search" type="button" id="button-addon2">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <a class="cadastrar ms-3" href="../register/airplaneRegister.html">
+                <i class="bi bi-plus" style="font-size: 18px; margin-right: 10px;"></i>Nova Aeronave
+            </a>
+        </div>
+    </div>
+
+    <!-- Tabela de Aeronaves -->
+    <div class="container" style="margin-top: 5rem;">
+        <ul class="responsive-table">
+        </ul>
+    </div>
+  <!-- Modal de Deletar Aeronave -->
+  <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelModalLabel">Deletar aeronave</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <i class="bi bi-exclamation-circle" style="color: rgb(235, 13, 13); margin-right: 10px; "></i>
+                Tem certeza de que deseja deletar a aeronave AEE11?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn2" data-bs-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-danger" onclick="window.location.href='../all_airplane/airplanePage.html';">Sim, cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay de carregamento -->
+<div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; justify-content: center; align-items: center;">
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script> 
+  <dotlottie-player src="https://lottie.host/a14cc146-51da-4447-bd9c-d897771a5be8/GZKdABYKQr.json" background="transparent" speed="1" style="width: 140px; height: 140px;" loop autoplay></dotlottie-player>    
+</div>
+
+<!-- Paginação -->
+<nav aria-label="Page navigation example" class="mt-3">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>        
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p style="margin-top: 10px; font-size: 14px;">&copy; 2024 Minas Airlines. Todos os direitos reservados.</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+
+<!-- Função de Overlay -->
+<script>
+    function showSpinner() {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "flex";
+
+        setTimeout(() => {
+            overlay.style.display = "none";
+            window.location.href='../all_airplane/airplanePage.html';
+        }, 10000);
+    }
+</script>
+<script>
+    const totalAirplanes = 35; // Exemplo: Total de 35 aeronaves
+    const itemsPerPage = 10;  // Número de aeronaves por página
+    const totalPages = Math.ceil(totalAirplanes / itemsPerPage); // Total de páginas
+    
+    // Função para exibir aeronaves na página atual
+    function displayAirplanes(page) {
+        const airplanesList = document.querySelector('.responsive-table');
+        airplanesList.innerHTML = ''; // Limpa a tabela antes de carregar
+
+        // Simulando a lista de aeronaves (substitua com dados reais)
+        const allAirplanes = Array.from({ length: totalAirplanes }, (_, i) => `Aeronave ${i + 1}`);
+        
+        // Exibir as aeronaves da página atual
+        const start = (page - 1) * itemsPerPage;
+        const end = page * itemsPerPage;
+        const pageAirplanes = allAirplanes.slice(start, end);
+
+        pageAirplanes.forEach(airplane => {
+            const li = document.createElement('li');
+            li.className = 'airplane-item';
+            li.textContent = airplane;
+            airplanesList.appendChild(li);
+        });
+    }
+
+    // Função para gerar a paginação
+    function generatePagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = ''; // Limpa a paginação antes de gerar
+
+        // Adicionar botão "Previous"
+        const prevButton = document.createElement('li');
+        prevButton.className = 'page-item';
+        prevButton.innerHTML = '<a class="page-link" href="#" aria-label="Previous">&laquo;</a>';
+        prevButton.addEventListener('click', () => changePage(currentPage - 1));
+        pagination.appendChild(prevButton);
+
+        // Adicionar os números de páginas
+        for (let i = 1; i <= totalPages; i++) {
+            const pageItem = document.createElement('li');
+            pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+            pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageItem.addEventListener('click', () => changePage(i));
+            pagination.appendChild(pageItem);
+        }
+
+        // Adicionar botão "Next"
+        const nextButton = document.createElement('li');
+        nextButton.className = 'page-item';
+        nextButton.innerHTML = '<a class="page-link" href="#" aria-label="Next">&raquo;</a>';
+        nextButton.addEventListener('click', () => changePage(currentPage + 1));
+        pagination.appendChild(nextButton);
+    }
+
+    // Função para alterar a página
+    let currentPage = 1;
+    function changePage(page) {
+        if (page < 1 || page > totalPages) return; // Previne navegação inválida
+        currentPage = page;
+        displayAirplanes(currentPage);
+        generatePagination();
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+        displayAirplanes(currentPage);
+        generatePagination();
+    });
+</script>
+<script>
+    // Função de logout
+function logout() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("password");
+    window.location.href = 'login.html';
+}
+
+</script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script src="../../assets/js/airplanePage.js"></script>
+</body>
+</html>
