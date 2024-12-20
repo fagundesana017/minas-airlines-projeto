@@ -30,7 +30,7 @@
    Acesse em: `http://localhost:5000`
 
 ## Integrantes do projeto
-- **Gustavo Vieira
-- **Ana Clara Fagundes
-- **Pedro Antero
-- **Emily Carolina 
+- Gustavo Vieira
+- Ana Clara Fagundes
+- Pedro Antero
+- Emily Carolina 
