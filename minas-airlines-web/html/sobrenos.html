@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/sobrenos.css">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="/img/Minas Airlines.png" alt="Minas Airlines" class="logo-img">
+    </a>
+
+    <div class="social-media">
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+      <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+    </div>
+
+    <div class="navbar-toggle" onclick="toggleNavbar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="navbar">
+      <a href="index.html" style="--i:1;">HOME</a>
+      <a href="sobrenos.html" style="--i:2">SOBRE NÓS</a>
+      <a href="sac.html" style="--i:3">SAC</a>
+      <a href="#" style="--i:4">SERVIÇOS</a>
+      <a href="time.html" style="--i:5">NOSSO TIME</a>
+  </nav>
+  </header>
+
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1>SOBRE MINAS AIRLINES</h1>
+    </div>
+  </section>
+
+  <section class="info-section bg-light">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p>Com o propósito de transformar a experiência de voos e logística aérea, a Minas Airlines nasceu no coração do Brasil, inspirada na inovação e na tradição mineira de hospitalidade. Nossa missão é oferecer soluções eficientes e seguras, conectando pessoas e cargas aos destinos mais importantes do país e do mundo.</p>
+                <p>Com uma equipe formada por especialistas em aviação e tecnologia, a Minas Airlines se destaca pelo uso de sistemas avançados de gestão de voos e aeronaves. Nosso compromisso é assegurar que cada operação, do despacho de voos à manutenção de aeronaves, ocorra com máxima precisão e responsabilidade ambiental. Investimos em tecnologia de ponta e adotamos práticas sustentáveis para reduzir o impacto ambiental de nossas operações.</p>
+                <p>Nosso portfólio de serviços inclui transporte aéreo de passageiros, carga e soluções logísticas integradas. Com uma infraestrutura moderna e uma frota composta pelas aeronaves mais seguras e confortáveis do mercado, garantimos um transporte ágil e eficiente.</p>
+                <p>Além disso, a Minas Airlines é dedicada à inovação contínua. Nosso centro de desenvolvimento trabalha para aprimorar os sistemas de monitoramento de voos e gestão de rotas, oferecendo aos nossos clientes e parceiros comerciais uma plataforma robusta e confiável.</p>
+                <p>Com a Minas Airlines, você não está apenas voando – você está embarcando em uma experiência planejada com segurança, eficiência e a atenção ao cliente que são parte da essência mineira.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="airlines-section">
+  <div class="container text-center">
+    <h2>COMPANHIAS AÉREAS</h2>
+    <div class="airlines-logos">
+      <a href="https://www.voeazul.com.br" target="_blank">
+        <img src="/img/Captura de Tela 2024-11-12 às 14.13.49.png" alt="Azul Linhas Aéreas" class="airline-logo">
+      </a>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    <p> FASEH - SITE OFICIAL MINAS AIRLINES</p>
+    <p>&copy; 2024 Minas Airlines. Todos os direitos reservados.</p>
+  </footer>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function toggleNavbar() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('open');
+    }
+  </script>
+  
+</body>
+</html>

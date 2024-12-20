@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #eaeaea;
+    overflow-x: hidden;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 8%;
+    background: #1d3466;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: background 0.3s ease;
+}
+
+.navbar a {
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 20px;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #7b7b85;
+}
+
+.home {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 8%;
+}
+
+.home-content {
+    max-width: 600px;
+}
+
+.home-content h1 {
+    font-size: 48px;
+}
+
+.home-content h3 {
+    font-size: 36px;
+    color: #1d3466;
+}
+
+.home-content p {
+    font-size: 16px;
+    margin: 15px 0 30px;
+    line-height: 1.6;
+}
+
+.hero-section {
+    width: 100%;
+    min-height: 90vh; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: url('/img/Azul-Airbus-A320neo-PR-YRR-ONTIME-1-scaled.jpg.webp') center/cover no-repeat;
+    color: white;
+    padding: 40px 8%;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.info-section {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.info-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #494949;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.info-section h2 {
+    color: #23238E;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    background-color: #1d3466;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.social-media {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-media a {
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: #7b7b85;
+    transform: scale(1.2);
+}
+
+@keyframes slideTop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.logo-img {
+    height: 150px;
+    width: auto;
+}
+
+.airlines-section {
+    padding: 40px 8%;
+    background-color: white;
+}
+
+.airlines-section h2 {
+    font-size: 28px;
+    color: #1d3466;
+    margin-bottom: 20px;
+}
+
+.airlines-logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.airline-logo {
+    max-width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.airline-logo:hover {
+    transform: scale(1.1);
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.navbar-toggle span {
+    background-color: #ffffff;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.navbar.open {
+    display: block;
+}
+
+.navbar.open a {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar a {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+    }
+
+    .home-content h3 {
+        font-size: 28px;
+    }
+
+    .hero-section h1 {
+        font-size: 36px;
+    }
+
+    .info-section h2 {
+        font-size: 24px;
+    }
+
+    .info-section p {
+        font-size: 16px;
+    }
+
+    .airlines-section h2 {
+        font-size: 24px;
+    }
+
+    .airline-logo {
+        max-width: 120px;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 5%;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    .home-content h1 {
+        font-size: 28px;
+    }
+
+    .home-content h3 {
+        font-size: 24px;
+    }
+
+    .hero-section h1 {
+        font-size: 28px;
+    }
+
+    .info-section h2 {
+        font-size: 22px;
+    }
+
+    .info-section p {
+        font-size: 14px;
+    }
+
+    .airlines-section h2 {
+        font-size: 20px;
+    }
+
+    .airline-logo {
+        max-width: 100px;
+    }
+}

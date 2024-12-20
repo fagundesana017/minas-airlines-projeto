@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá! Queremos ouvir você!</title>
+    <link rel="stylesheet" href="/css/sac.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="/img/Minas Airlines.png" alt="Minas Airlines" class="logo-img">
+          </a>
+
+          <div class="social-media">
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+        </div>
+
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+            <a href="sobrenos.html">SOBRE NÓS</a>
+            <a href="sac.html">SAC</a>
+            <a href="#">SERVIÇOS</a>
+            <a href="time.html">NOSSO TIME</a>
+        </nav>
+    </header>
+
+    <div class="sac-form">
+        <h2>FORMULÁRIO DE CONTATO</h2>
+        
+        <div class="form-instructions">
+            <strong>Instruções de preenchimento:</strong>
+            <p>Obs.: Para um melhor direcionamento na tratativa de seu relato, por favor, citar no campo descrição o máximo de detalhes de sua ocorrência.</p>
+        </div>
+
+        <form id="sacForm">
+            <div class="input-box">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            </div>
+
+            <div class="input-box">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+            </div>
+
+            <div class="input-box">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required>
+            </div>
+
+            <div class="input-box">
+                <label for="motivo">Motivo do Contato:</label>
+                <select id="motivo" name="motivo" required>
+                    <option value="">Selecione o motivo</option>
+                    <option value="trabalhe_conosco">Colaborador</option>
+                    <option value="credenciamento">Credenciamento</option>
+                    <option value="publicidade">Publicidade</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <label for="mensagem">Descrição:</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem..." rows="4" required></textarea>
+            </div>
+
+            <div class="submit-box">
+                <button type="submit" class="submit-button">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="popup-close" class="popup-close">&times;</span>
+            <h2>Formulário Enviado</h2>
+            <p>Seu formulário foi enviado com sucesso. Em breve, entraremos em contato!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p> FASEH - SITE OFICIAL MINAS AIRLINES</p>
+        <p>&copy; 2024 Minas Airlines. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const sacForm = document.getElementById('sacForm');
+        const popup = document.getElementById('popup');
+        const popupClose = document.getElementById('popup-close');
+
+        sacForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            popup.style.display = 'flex';
+        });
+
+        popupClose.addEventListener('click', function() {
+            popup.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
