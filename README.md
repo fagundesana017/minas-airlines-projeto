@@ -13,7 +13,7 @@
 
 ## Tecnologias
 - **Frontend**: HTML, CSS, JavaScript.
-- **Backend**: Python (Flask).
+- **Backend**: Python (Django rest framework).
 - **Banco de Dados**: SQLite.
 
 ## Instalação
